@@ -24,6 +24,9 @@ const userSchema = new mongoose.Schema({
         state: String,
         country: String,
         pincode: String
+    },
+    carType: {
+        type: mongoose.Schema.Types.ObjectId
     }
 })
 
