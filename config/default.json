@@ -1,3 +1,4 @@
 {
-    "jwtPrivateKey": "freshwashJwtPrivateKey"
+    "jwtPrivateKey": "freshwashJwtPrivateKey",
+    "mongodbPassword": "mongodbPassword"
 }

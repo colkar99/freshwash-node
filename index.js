@@ -5,9 +5,11 @@ const authRouter = require('./router/auth');
 const orderRouter = require('./router/order');
 const statusRouter = require('./router/status');
 const mongoose = require('mongoose');
-const MONGODB_URI = "mongodb://localhost/playground"
+// const MONGODB_URI = "mongodb://localhost/playground"
 const config = require('config');
-mongoose.connect(MONGODB_URI,)
+const MONGODB_URI = `mongodb+srv://karthik:${config.get('mongodbPassword')}@node-complete-ycjff.mongodb.net/test?retryWrites=true&w=majority`;
+
+// mongoose.connect(MONGODB_URI,)
 // app.use(express.json());
 app.use(express.json());
 
@@ -16,7 +18,7 @@ if(!config.has('jwtPrivateKey')){
     console.error('FATTAL ERROR: jwtPrivateKey is not defined in env');
     process.exit(1);
 }
-// console.log(process.env)
+console.log(MONGODB_URI);
 
 app.use('/api/user',userRouter);
 app.use('/api/auth',authRouter);
