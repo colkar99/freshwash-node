@@ -29,6 +29,6 @@ app.use('/api/status', statusRouter);
 //connected mongodb 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
     .then(data => {
-        app.listen(3000);
+        app.listen(8080,'localhost');
     }).catch(err => console.log(err))
 
