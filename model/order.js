@@ -27,7 +27,8 @@ const testSchema = new mongoose.Schema({
     currentPrice: { type: Number, default: 0 },
     offerPrice: { type: Number, default: 0 },
     customerRating: { type: Number },
-    customerFeedback: String
+    customerFeedback: String,
+    orderFrom: String
 })
 
 const orderSchema = new mongoose.Schema({

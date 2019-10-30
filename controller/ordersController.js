@@ -73,6 +73,7 @@ async function createOrderObject(params) {
         isPaid: false,
         currentPrice: 400,
         offerPrice: 350,
+        orderFrom: params.orderFrom
     }
     return orders
 }
