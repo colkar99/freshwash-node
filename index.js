@@ -1,36 +1,18 @@
 const express = require('express');
 const app = express();
-const userRouter = require('./router/user');
-const authRouter = require('./router/auth');
-const orderRouter = require('./router/order');
-const statusRouter = require('./router/status');
-const mongoose = require('mongoose');
-var cors = require('cors')
+const winston = require('winston')
 
-// const MONGODB_URI = "mongodb://localhost/playground"
-const config = require('config');
-const MONGODB_URI = `mongodb+srv://karthik:BWbzwL0UlSRek2sC@freshwash-ycjff.mongodb.net/test?retryWrites=true&w=majority`;
+const cors = require('cors')
 app.use(cors());
-// mongoose.connect(MONGODB_URI,)
-// app.use(express.json());
-app.use(express.json());
+require('./startup/logging')();
+require('./startup/router')(app);
+require('./startup/db')();
+require('./startup/config')();
 
-if(!config.has('jwtPrivateKey')){
-    console.log(config.has('jwtPrivateKey'))
-    console.error('FATTAL ERROR: jwtPrivateKey is not defined in env');
-    process.exit(1);
-}
-console.log(MONGODB_URI);
+// throw new Error("Some thinf happened")
 
-app.use('/api/user',userRouter);
-app.use('/api/auth',authRouter);
-app.use('/api/order', orderRouter);
-app.use('/api/status', statusRouter);
+const port = process.env.PORT || 8080;
+app.listen(port,() => winston.info(`Listing to port no ${port}`))
+// console.log(process.env.karthikraj);
 
-
-//connected mongodb 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
-    .then(data => {
-        app.listen(8080,'localhost');
-    }).catch(err => console.log(err))
 
