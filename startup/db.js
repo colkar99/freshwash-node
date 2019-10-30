@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const winston = require('winston')
 
-const MONGODB_URI = `mongodb+srv://karthik:BWbzwL0UlSRek2sC@freshwash-ycjff.mongodb.net/test?retryWrites=true&w=majority`;
+const enviroment = process.env.NODE_ENV || 'test'
+const MONGODB_URI = `mongodb+srv://karthik:BWbzwL0UlSRek2sC@freshwash-ycjff.mongodb.net/${enviroment}?retryWrites=true&w=majority`;
 // const MONGODB_URI = "mongodb://localhost/playground"
 
 module.exports = function () {
