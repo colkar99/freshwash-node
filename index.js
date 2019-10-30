@@ -7,7 +7,7 @@ const statusRouter = require('./router/status');
 const mongoose = require('mongoose');
 // const MONGODB_URI = "mongodb://localhost/playground"
 const config = require('config');
-const MONGODB_URI = `mongodb+srv://karthik:${config.get('mongodbPassword')}@freshwash-ycjff.mongodb.net/test?retryWrites=true&w=majority`;
+const MONGODB_URI = `mongodb+srv://karthik:BWbzwL0UlSRek2sC@freshwash-ycjff.mongodb.net/test?retryWrites=true&w=majority`;
 
 // mongoose.connect(MONGODB_URI,)
 // app.use(express.json());
