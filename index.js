@@ -5,10 +5,12 @@ const authRouter = require('./router/auth');
 const orderRouter = require('./router/order');
 const statusRouter = require('./router/status');
 const mongoose = require('mongoose');
+var cors = require('cors')
+
 // const MONGODB_URI = "mongodb://localhost/playground"
 const config = require('config');
 const MONGODB_URI = `mongodb+srv://karthik:BWbzwL0UlSRek2sC@freshwash-ycjff.mongodb.net/test?retryWrites=true&w=majority`;
-
+app.use(cors());
 // mongoose.connect(MONGODB_URI,)
 // app.use(express.json());
 app.use(express.json());
