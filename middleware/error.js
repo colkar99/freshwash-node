@@ -3,7 +3,7 @@ const { mailTransporter } = require('../middleware/mailer')
 
 module.exports = function (err, req, res, next) {
     winston.error(err.message, err);
-    if (process.env.NODE_ENV === 'production') mailTransporter.sendMail(initOption(err), (err, info) => {
+    if (process.env.NODE_ENV) mailTransporter.sendMail(initOption(err), (err, info) => {
         if (err){
             winston.info(err.message, err);
 
@@ -17,7 +17,7 @@ function initOption(err) {
     return {
         from: process.env.EMAIL_USERNAME,
         to: 'colkar99@gmail.com',
-        subject: 'Error occured in production',
+        subject: `${process.env.NODE_ENV} Error occurs`,
         html: `<h4>${err.message}</h4>
                 <p>${err}</p>`
     }
