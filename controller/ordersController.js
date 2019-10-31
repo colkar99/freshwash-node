@@ -49,7 +49,7 @@ async function createUser(params) {
 }
 async function findStatus(statusCode) {
     const status = await Status.findOne({ priorityStatus: statusCode });
-    if (!status) return new Error(`Status not found with this priortity status ${statusCode}`)
+    if (!status) return new Error(`Status not found with this priortity status ${statusCode} ..Admin Please create status before placing the order`)
     return status._id;
 }
 
