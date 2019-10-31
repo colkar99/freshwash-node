@@ -29,7 +29,7 @@ const testSchema = new mongoose.Schema({
     customerRating: { type: Number },
     customerFeedback: String,
     orderFrom: String
-})
+},{timestamps: true})
 
 const orderSchema = new mongoose.Schema({
     user: {

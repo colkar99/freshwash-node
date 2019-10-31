@@ -53,7 +53,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(uniqueValidator, { message: 'Email has been already taken' });
 userSchema.methods.generateJwtToken = function (){
-    const token = jwt.sign({_id: this._id,isAdmin: this.isAdmin},config.get('jwtPrivateKey'));
+    const token = jwt.sign({_id: this._id,isAdmin: this.isAdmin},process.env.JWTPRIVATEKEY);
     return token;
 };
 
