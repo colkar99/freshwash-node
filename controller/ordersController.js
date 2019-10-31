@@ -77,7 +77,7 @@ async function mailTransporterSend(order) {
     orders.orders.reverse();
     mailerOption = {
         from: process.env.EMAIL_USERNAME,
-        to: 'karthikraj.krishnamoorthy@ebenefitsnetwork.com',
+        to: 'colkar99@gmail.com',
         subject: 'New order',
         html: `<h2>New order request came</h2>
                 <ul>
