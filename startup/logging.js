@@ -1,6 +1,7 @@
 const winston = require('winston');
-require('winston-mongodb')
-const MONGODB_URI = `mongodb+srv://karthik:BWbzwL0UlSRek2sC@freshwash-ycjff.mongodb.net/test?retryWrites=true&w=majority`;
+require('winston-mongodb');
+const enviroment = process.env.NODE_ENV || 'development'
+const MONGODB_URI = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@freshwash-ycjff.mongodb.net/${enviroment}?retryWrites=true&w=majority`;
 require('express-async-errors');
 
 
