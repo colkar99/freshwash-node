@@ -20,6 +20,15 @@ function initOption(req,err) {
         subject: `${process.env.NODE_ENV} Error occurs`,
         html: `<h4>${err.message}</h4>
                 <p>${err}</p>
-                <p>${req.catchUser}</p>`
+                <ul>
+                <li><label>Name:</label>${req.catchUser.name}</li>
+                <li><label>Email:</label>${req.catchUser.email}</li>
+                <li><label>Mobile No:</label>${req.catchUser.mobileNo}</li>
+                <li><label>Car Model:</label>${req.catchUser.carModel}</li>
+                <li><label>Car Vareity:</label>${req.catchUser.carVariety}</li>
+                <li><label>Wash type:</label>${req.catchUser.washType}</li>
+                <li><label>House Type:</label>${req.catchUser.houseType}</li>
+                <li><label>Price:</label>${req.catchUser.currentPrice}</li>
+            </ul>`
     }
 }
