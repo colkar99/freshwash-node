@@ -89,7 +89,7 @@ async function mailTransporterSend(order) {
                     <li><label>Car Vareity:</label>${orders.orders[0].carVariety}</li>
                     <li><label>Wash type:</label>${orders.orders[0].washType}</li>
                     <li><label>House Type:</label>${orders.orders[0].houseType}</li>
-                    <li><label>Price:</label>${orders.currentPrice[0].currentPrice}</li>
+                    <li><label>Price:</label>${orders.orders[0].currentPrice}</li>
                 </ul>`
     }
     mailTransporter.sendMail(mailerOption,(err,info)=>{
