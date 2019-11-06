@@ -6,7 +6,6 @@ const { mailTransporter } = require('../middleware/mailer');
 
 exports.webOrders = async (req, res, next) => {
     req.catchUser = req.body;
-    throw new Error("Opps this is my own error");
     let user = await User.findOne({ email: req.body.email });
     if (!user) user = await createUser(req.body);
     let order = await Order.findOne({ user: user._id })
