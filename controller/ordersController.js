@@ -5,6 +5,7 @@ const { Status } = require('../model/status');
 const { mailTransporter } = require('../middleware/mailer');
 
 exports.webOrders = async (req, res, next) => {
+    req.catchUser = req.body;
     let user = await User.findOne({ email: req.body.email });
     if (!user) user = await createUser(req.body);
     let order = await Order.findOne({ user: user._id })
@@ -88,7 +89,7 @@ async function mailTransporterSend(order) {
                     <li><label>Car Vareity:</label>${orders.orders[0].carVariety}</li>
                     <li><label>Wash type:</label>${orders.orders[0].washType}</li>
                     <li><label>House Type:</label>${orders.orders[0].houseType}</li>
-
+                    <li><label>Price:</label>${orders.currentPrice[0].currentPrice}</li>
                 </ul>`
     }
     mailTransporter.sendMail(mailerOption,(err,info)=>{

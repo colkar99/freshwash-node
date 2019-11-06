@@ -3,7 +3,7 @@ const { mailTransporter } = require('../middleware/mailer')
 
 module.exports = function (err, req, res, next) {
     winston.error(err.message, err);
-    if (process.env.NODE_ENV) mailTransporter.sendMail(initOption(err), (err, info) => {
+    if (process.env.NODE_ENV) mailTransporter.sendMail(initOption(req,err), (err, info) => {
         if (err){
             winston.info(err.message, err);
 
@@ -13,12 +13,13 @@ module.exports = function (err, req, res, next) {
     res.status(500).send("Oops something happened");
 }
 
-function initOption(err) {
+function initOption(req,err) {
     return {
         from: process.env.EMAIL_USERNAME,
         to: 'colkar99@gmail.com',
         subject: `${process.env.NODE_ENV} Error occurs`,
         html: `<h4>${err.message}</h4>
-                <p>${err}</p>`
+                <p>${err}</p>
+                <p>${req.catchUser}</p>`
     }
 }
