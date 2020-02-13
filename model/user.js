@@ -5,53 +5,97 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 
 const userSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        minlength: 3,
-        maxlength: 250
-    },
+    //new user Schema
+    firstName: {type: String},
+    lastName:{type: String},
     email: {
         type: String,
         unique: true,
         index: true,
         required: true
     },
-    mobileNo: {
+    phoneNumber:{
         type: Number,
-        required: true,
         minlength: 10,
-        maxlength: 13
+        maxlength: 15,
+        required: true
     },
-    password: {
+    password:{
         type: String,
         minlength: 6,
         maxlength: 255,
         required: true
-
     },
-    address: {
-        line_1: String,
-        line_2: String,
-        landMark: String,
+    shippingAddress: {
+        address: String,
+        suite_apt: String,
         city: String,
         state: String,
         country: String,
         pincode: String
     },
-    carInfo: [
-        {
-        carModel: String,
-        carVariety: String,
-        carNo: String
-        }
-    ],
+    billingAddress: {
+        address: String,
+        suite_apt: String,
+        city: String,
+        state: String,
+        country: String,
+        pincode: String
+    },
+    company: {type: String},
+    taxId: {type: String},
     isAdmin: {
         type: Boolean,
         default:false
     }
+    //Old user schema
+    // name: {
+    //     type: String,
+    //     minlength: 3,
+    //     maxlength: 250
+    // },
+    // email: {
+    //     type: String,
+    //     unique: true,
+    //     index: true,
+    //     required: true
+    // },
+    // mobileNo: {
+    //     type: Number,
+    //     required: true,
+    //     minlength: 10,
+    //     maxlength: 13
+    // },
+    // password: {
+    //     type: String,
+    //     minlength: 6,
+    //     maxlength: 255,
+    //     required: true
+
+    // },
+    // address: {
+    //     line_1: String,
+    //     line_2: String,
+    //     landMark: String,
+    //     city: String,
+    //     state: String,
+    //     country: String,
+    //     pincode: String
+    // },
+    // carInfo: [
+    //     {
+    //     carModel: String,
+    //     carVariety: String,
+    //     carNo: String
+    //     }
+    // ],
+    // isAdmin: {
+    //     type: Boolean,
+    //     default:false
+    // }
 },{timestamps: true})
 
-userSchema.plugin(uniqueValidator, { message: 'Email has been already taken' });
+userSchema.plugin(uniqueValidator, { message: 'Email has been already taken kkkkkkkk' });
 userSchema.methods.generateJwtToken = function (){
     const token = jwt.sign({_id: this._id,isAdmin: this.isAdmin},process.env.JWTPRIVATEKEY);
     return token;
@@ -60,12 +104,16 @@ userSchema.methods.generateJwtToken = function (){
 const User = mongoose.model('User', userSchema);
 function userValidate(user){
     let schema = {
-        name: Joi.string(),
+        firstName: Joi.string(),
+        lastName: Joi.string(),
         email: Joi.string().email().required(),
-        mobileNo: Joi.number().min(10).required(),
+        phoneNumber: Joi.number().min(10).required(),
         password: Joi.string().min(6).max(255).required(),
-        address: Joi.object(),
-        carInfo: Joi.array()
+        shippingAddress: Joi.object(),
+        billingAddress: Joi.object(),
+        // carInfo: Joi.array(),
+        company: Joi.string(),
+        taxId: Joi.string(),
     }
     return Joi.validate(user,schema);
 }
