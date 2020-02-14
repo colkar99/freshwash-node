@@ -6,10 +6,10 @@ const error = require('../middleware/error');
 const express = require('express');
 module.exports = function (app) {
     app.use(express.json());
-    app.use('/api/user', userRouter);
-    app.use('/api/auth', authRouter);
-    app.use('/api/order', orderRouter);
-    app.use('/api/status', statusRouter);
+    app.use('/user', userRouter);
+    app.use('/auth', authRouter);
+    app.use('/order', orderRouter);
+    app.use('/status', statusRouter);
     //Common Error handling function
     app.use(error);
 }
