@@ -44,6 +44,7 @@ const userSchema = new mongoose.Schema({
     },
     company: {type: String},
     taxId: {type: String},
+    comments: {type: String},
     isAdmin: {
         type: Boolean,
         default:false
@@ -113,7 +114,8 @@ function userValidate(user){
         billingAddress: Joi.object(),
         // carInfo: Joi.array(),
         company: Joi.string(),
-        taxId: Joi.string(),
+        taxId: Joi.string().min(0),
+        comments: Joi.string().allow(''),
     }
     return Joi.validate(user,schema);
 }
