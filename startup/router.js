@@ -6,6 +6,9 @@ const error = require('../middleware/error');
 const express = require('express');
 module.exports = function (app) {
     app.use(express.json());
+    app.get('/', function(req, res){
+        res.send("Hello World!");
+     });
     app.use('api/user', userRouter);
     app.use('api/auth', authRouter);
     app.use('api/order', orderRouter);
