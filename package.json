@@ -1,15 +1,15 @@
 {
-  "name": "freshwash",
+  "name": "Gologo",
   "version": "1.0.0",
-  "description": "Car wash application at doorstep",
+  "description": "Polo custom shirts",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "Car",
-    "wash",
-    "application"
+    "Gologo",
+    "Polo T-shirts",
+    "Custom T-shirts"
   ],
   "author": "karthik raj krishnamoorthy",
   "license": "ISC",
