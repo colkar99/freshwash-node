@@ -9,10 +9,10 @@ module.exports = function (app) {
     app.get('/', function(req, res){
         res.send("Hello World!");
      });
-    app.use('api/user', userRouter);
-    app.use('api/auth', authRouter);
-    app.use('api/order', orderRouter);
-    app.use('api/status', statusRouter);
+    app.use('/api/user', userRouter);
+    app.use('/api/auth', authRouter);
+    app.use('/api/order', orderRouter);
+    app.use('/api/status', statusRouter);
     //Common Error handling function
     app.use(error);
 }
