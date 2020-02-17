@@ -13,3 +13,4 @@ const orderStatusSchema = new mongoose.Schema({
 },{timestamps: true})
 
 const OrderStatus = mongoose.model('orderStatus', orderStatusSchema);
+exports.OrderStatus = OrderStatus;
